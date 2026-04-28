@@ -1,4 +1,5 @@
 import { common } from '@kit.AbilityKit';
+import { SecondaryWant } from '../consts';
 import { bark, catching, defer, defers } from '../patch';
 
 @Entry
@@ -19,10 +20,7 @@ struct Last {
 
       Button('Launch Immediately').width(240).onClick(async () => {
         catching(async () => {
-          await this.context.startAbility({
-            bundleName: "play.ground.distraction",
-            abilityName: "SecondaryAbility"
-          }, {
+          await this.context.startAbility(SecondaryWant, {
             windowMode: 1,
           })
         })
@@ -32,10 +30,7 @@ struct Last {
         catching(async () => {
           await defers(10_000)
           bark(`start ability`)
-          await this.context.startAbility({
-            bundleName: "play.ground.distraction",
-            abilityName: "SecondaryAbility"
-          }, {
+          await this.context.startAbility(SecondaryWant, {
             windowMode: 1,
           })
         })

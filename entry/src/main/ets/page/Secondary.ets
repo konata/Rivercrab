@@ -1,4 +1,5 @@
 import { common } from '@kit.AbilityKit';
+import { LastWant } from '../consts';
 import { bark, catching, defers } from '../patch';
 
 @Entry
@@ -11,12 +12,7 @@ struct Secondary {
       Text(`Secondary Page`).fontSize(22).fontWeight(FontWeight.Bold)
       Button('Launch Immediately').width(240).onClick(async () => {
         catching(async () => {
-          await this.context.startAbility({
-            bundleName: "play.ground.distraction",
-            abilityName: "LastAbility"
-          }, {
-            windowMode: 1,
-          })
+          await this.context.startAbility(LastWant, { windowMode: 1, })
         })
       })
 
@@ -24,12 +20,7 @@ struct Secondary {
         catching(async () => {
           await defers(10_000)
           bark(`start ability`)
-          await this.context.startAbility({
-            bundleName: "play.ground.distraction",
-            abilityName: "LastAbility"
-          }, {
-            windowMode: 1,
-          })
+          await this.context.startAbility(LastWant, { windowMode: 1, })
         })
 
       })

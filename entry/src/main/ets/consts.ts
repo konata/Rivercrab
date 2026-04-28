@@ -1,7 +1,7 @@
 import { Want } from "@kit.AbilityKit"
 
 export const Consts = {
-  bundleName: "play.ground.distraction"
+  bundleName: "river.crab"
 }
 
 export const [
