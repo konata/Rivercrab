@@ -6,8 +6,8 @@ export default class LastAbility extends UIAbility {
   override onWindowStageCreate(windowStage: window.WindowStage): void {
     super.onWindowStageCreate(windowStage);
     bark("onWindowStageCreate")
-    windowStage.loadContent("Last", err => {
-      bark(`loadContent, ${err.message ?? "message"} ${err.name ?? 'name?'} ${err.stack ?? 'stack?'}}`)
+    windowStage.loadContent("page/Last", err => {
+      bark(`loadContent, message:${err.message}, stack:${err.stack}`)
     })
   }
 }

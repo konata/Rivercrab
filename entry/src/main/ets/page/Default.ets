@@ -1,14 +1,20 @@
 import { common } from '@kit.AbilityKit';
-import { bark, catching, defers } from '../ts/patch';
+import { bark, catching, defer, defers } from '../patch';
 
 @Entry
 @Component
-struct Secondary {
+struct Default {
   private context = getContext(this) as common.UIAbilityContext;
+
+  aboutToAppear(): void {
+  }
+
+  aboutToDisappear(): void {
+  }
 
   build() {
     Column({ space: 12 }) {
-      Text(`Secondary Page`).fontSize(22).fontWeight(FontWeight.Bold)
+      Text(`Primary Page`).fontSize(22).fontWeight(FontWeight.Bold)
       Button('Launch Immediately').width(240).onClick(async () => {
         catching(async () => {
           await this.context.startAbility({

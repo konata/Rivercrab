@@ -1,7 +1,7 @@
 {
   "src": [
-    "Default",
-    "Secondary",
-    "Last"
+    "page/Default",
+    "page/Secondary",
+    "page/Last"
   ]
 }

@@ -1,9 +1,9 @@
 import { common } from '@kit.AbilityKit';
-import { bark, catching, defer, defers } from '../ts/patch';
+import { bark, catching, defer, defers } from '../patch';
 
 @Entry
 @Component
-struct Default {
+struct Last {
   private context = getContext(this) as common.UIAbilityContext;
 
   aboutToAppear(): void {
@@ -14,7 +14,9 @@ struct Default {
 
   build() {
     Column({ space: 12 }) {
-      Text(`Primary Page`).fontSize(22).fontWeight(FontWeight.Bold)
+      Text(`Last Page`).fontSize(22).fontWeight(FontWeight.Bold)
+      Text(`playState: playstate`).fontSize(14)
+
       Button('Launch Immediately').width(240).onClick(async () => {
         catching(async () => {
           await this.context.startAbility({

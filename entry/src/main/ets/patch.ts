@@ -8,7 +8,6 @@ export async function defer(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-
 export async function defers(ms: number) {
   let count = 0
   while (count < ms) {
@@ -17,7 +16,6 @@ export async function defers(ms: number) {
     count += 1000
   }
 }
-
 
 export async function catching(fn: () => Promise<void>) {
   try {

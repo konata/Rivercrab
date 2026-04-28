@@ -13,7 +13,7 @@
     "abilities": [
       {
         "name": "DefaultAbility",
-        "srcEntry": "./ts/controller/DefaultAbility.ts",
+        "srcEntry": "./ets/controller/DefaultAbility.ts",
         "description": "Default Ablility ",
         "icon": "$media:layered_image",
         "label": "$string:ability_label",
@@ -33,7 +33,7 @@
       },
       {
         "name": "SecondaryAbility",
-        "srcEntry": "./ts/controller/SecondaryAbility.ts",
+        "srcEntry": "./ets/controller/SecondaryAbility.ts",
         "description": "Secondary Ability",
         "icon": "$media:layered_image",
         "label": "$string:ability_label",
@@ -44,7 +44,7 @@
       },
       {
         "name": "LastAbility",
-        "srcEntry": "./ts/controller/LastAbility.ts",
+        "srcEntry": "./ets/controller/LastAbility.ts",
         "description": "Last Ability",
         "icon": "$media:layered_image",
         "label": "$string:ability_label",
@@ -57,7 +57,7 @@
     "extensionAbilities": [
       {
         "name": "BackupAbility",
-        "srcEntry": "./ts/extension/BackupAbility.ts",
+        "srcEntry": "./ets/extension/BackupAbility.ts",
         "type": "backup",
         "exported": false,
         "metadata": [
