@@ -1,7 +1,7 @@
 import { Want } from "@kit.AbilityKit"
 
 export const Consts = {
-  bundleName: "river.crab"
+  bundleName: "rivercr.a.b"
 }
 
 export const [
