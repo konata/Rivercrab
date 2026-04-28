@@ -1,16 +1,16 @@
 {
   "string": [
     {
-      "name": "module_desc",
-      "value": "module description"
+      "name": "module_description",
+      "value": "Harmony Playground"
     },
     {
-      "name": "EntryAbility_desc",
-      "value": "description"
+      "name": "ability_description",
+      "value": "demonstration"
     },
     {
-      "name": "EntryAbility_label",
-      "value": "label"
+      "name": "ability_label",
+      "value": "Harmony Wokrspace"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "module": {
     "name": "entry",
     "type": "entry",
-    "description": "$string:module_desc",
+    "description": "$string:module_description",
     "mainElement": "DefaultAbility",
     "deviceTypes": [
       "phone"
@@ -13,10 +13,10 @@
     "abilities": [
       {
         "name": "DefaultAbility",
-        "srcEntry": "./ts/ability/controller/DefaultAbility.ts",
-        "description": "$string:EntryAbility_desc",
+        "srcEntry": "./ts/controller/DefaultAbility.ts",
+        "description": "Default Ablility ",
         "icon": "$media:layered_image",
-        "label": "$string:EntryAbility_label",
+        "label": "$string:ability_label",
         "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
@@ -30,12 +30,34 @@
             ]
           }
         ]
+      },
+      {
+        "name": "SecondaryAbility",
+        "srcEntry": "./ts/controller/SecondaryAbility.ts",
+        "description": "Secondary Ability",
+        "icon": "$media:layered_image",
+        "label": "$string:ability_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": []
+      },
+      {
+        "name": "LastAbility",
+        "srcEntry": "./ts/controller/LastAbility.ts",
+        "description": "Last Ability",
+        "icon": "$media:layered_image",
+        "label": "$string:ability_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": []
       }
     ],
     "extensionAbilities": [
       {
         "name": "BackupAbility",
-        "srcEntry": "./ts/ability/extension/BackupAbility.ts",
+        "srcEntry": "./ts/extension/BackupAbility.ts",
         "type": "backup",
         "exported": false,
         "metadata": [

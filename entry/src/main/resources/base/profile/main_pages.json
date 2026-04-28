@@ -1,5 +1,7 @@
 {
   "src": [
-    "pages/Index"
+    "Default",
+    "Secondary",
+    "Last"
   ]
 }

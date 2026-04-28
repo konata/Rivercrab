@@ -8,9 +8,20 @@ export async function defer(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export function catching(fn: () => void) {
+
+export async function defers(ms: number) {
+  let count = 0
+  while (count < ms) {
+    await new Promise(_ => setTimeout(_, 1000))
+    bark(`wait for ${count}`)
+    count += 1000
+  }
+}
+
+
+export async function catching(fn: () => Promise<void>) {
   try {
-    fn()
+    await fn()
   } catch (e) {
     bark(`catching[e]: ${e}`)
   }
