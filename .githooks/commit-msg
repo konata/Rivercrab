@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+msg_file=${1:?commit message file is required}
+
+if [[ ! -f "$msg_file" ]]; then
+  echo "commit-msg hook error: commit message file not found: $msg_file" >&2
+  exit 1
+fi
+
+first_line=$(/usr/bin/sed -n '1{s/\r$//;p;}' "$msg_file")
+subject=$first_line
+
+# Allow autosquash prefixes while still validating the underlying status.
+if [[ $subject == "fixup! "* ]]; then
+  subject=${subject#fixup! }
+fi
+if [[ $subject == "squash! "* ]]; then
+  subject=${subject#squash! }
+fi
+
+if [[ $subject =~ ^@:\ .+ ]]; then
+  cat >&2 <<'EOF'
+Warning: @: commit accepted without changing branch status.
+The current branch status remains the nearest previous non-@: status commit.
+EOF
+  exit 0
+fi
+
+if [[ $subject =~ ^(active|complete|drop):\ .+ ]] || [[ $subject =~ ^hold\([a-z]\):\ .+ ]]; then
+  exit 0
+fi
+
+cat >&2 <<'EOF'
+Invalid commit subject.
+
+Expected the first line to use one of these prefixes:
+  active: <summary>
+  hold(<a-z>): <summary>
+  complete: <summary>
+  drop: <summary>
+  @: <summary>
+
+Examples:
+  active: extend provider reachability analysis
+  hold(c): blocked by missing primitive, keep notes
+  complete: finish PoC and consolidate conclusions
+  drop: false lead, no further research value
+  @: adjust commit hook and guideline wording
+
+Rule:
+  The prefix describes the branch status after this commit.
+  A leading @: skips status validation and keeps the previous branch status unchanged.
+EOF
+
+exit 1
