@@ -4,11 +4,7 @@ export const Consts = {
   bundleName: "rivercr.a.b"
 }
 
-export const [
-  DefaultWant,
-  SecondaryWant,
-  LastWant,
-] = ["Default", "Secondary", "Last"].map(it => ({
+export const [DefaultWant, SecondaryWant, LastWant,] = ["Default", "Secondary", "Last"].map(it => ({
   bundleName: Consts.bundleName,
   abilityName: `${it}Ability`
 } as Want))

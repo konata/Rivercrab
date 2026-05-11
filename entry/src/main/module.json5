@@ -14,7 +14,7 @@
       {
         "name": "DefaultAbility",
         "srcEntry": "./ets/controller/DefaultAbility.ts",
-        "description": "Default Ablility ",
+        "description": "Default Ability",
         "icon": "$media:layered_image",
         "label": "$string:ability_label",
         "startWindowIcon": "$media:startIcon",
