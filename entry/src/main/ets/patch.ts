@@ -1,4 +1,4 @@
-import { hilog } from "@kit.PerformanceAnalysisKit";
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export function bark(msg: string) {
   hilog.info(0, "natsuki", msg);

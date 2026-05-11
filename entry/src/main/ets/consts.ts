@@ -1,4 +1,4 @@
-import { Want } from "@kit.AbilityKit"
+import { Want } from '@kit.AbilityKit'
 
 export const Consts = {
   bundleName: "rivercr.a.b"

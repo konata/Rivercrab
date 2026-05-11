@@ -1,6 +1,4 @@
 import { common } from '@kit.AbilityKit';
-import { SecondaryWant } from '../consts';
-import { bark, catching, defer, defers } from '../patch';
 
 @Entry
 @Component

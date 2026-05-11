@@ -1,5 +1,5 @@
-import { BackupExtensionAbility, BundleVersion } from "@kit.CoreFileKit"
-import { bark } from "../patch"
+import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit'
+import { bark } from '../patch'
 
 
 export default class BackupAbility extends BackupExtensionAbility {

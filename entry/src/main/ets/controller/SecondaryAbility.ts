@@ -1,6 +1,6 @@
-import { UIAbility } from "@kit.AbilityKit";
-import window from "@ohos.window";
-import { bark } from "../patch";
+import { UIAbility } from '@kit.AbilityKit';
+import window from '@ohos.window';
+import { bark } from '../patch';
 
 
 export default class SecondaryAbility extends UIAbility {
