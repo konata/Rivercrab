@@ -1,9 +1,10 @@
-import { UIAbility } from '@kit.AbilityKit';
-import { bark } from '../patch';
-import window from '@ohos.window';
+import { UIAbility } from "@kit.AbilityKit";
+import { bark } from "../patch";
+import { window } from "@kit.ArkUI";
 
-export default class DefaultAbility extends UIAbility {
+export class DefaultAbility extends UIAbility {
   override async onWindowStageCreate(windowStage: window.WindowStage) {
+    bark(`DefaultAbility:onWindowStageCreate`)
     super.onWindowStageCreate(windowStage);
     bark("onWindowStageCreate")
     await windowStage.loadContent("view/Default")

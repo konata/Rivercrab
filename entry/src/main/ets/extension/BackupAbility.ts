@@ -1,8 +1,7 @@
-import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit'
-import { bark } from '../patch'
+import { BackupExtensionAbility, BundleVersion } from "@kit.CoreFileKit"
+import { bark } from "../patch"
 
-
-export default class BackupAbility extends BackupExtensionAbility {
+export class BackupAbility extends BackupExtensionAbility {
   override onBackup(): void {
     bark("onBackup")
   }
@@ -11,8 +10,3 @@ export default class BackupAbility extends BackupExtensionAbility {
     bark(`onRestore: ${bundleVersion}`)
   }
 }
-
-
-
-
-
