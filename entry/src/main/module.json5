@@ -16,8 +16,8 @@
         "srcEntry": "./ets/controller/DefaultAbility.ts",
         "description": "Default Ability",
         "icon": "$media:layered_image",
-        "label": "$string:ability_label",
-        "startWindowIcon": "$media:startIcon",
+        "label": "$string:launcher_name",
+        "startWindowIcon": "$media:foreground",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
         "skills": [
@@ -27,7 +27,7 @@
             ],
             "actions": [
               "ohos.want.action.home"
-            ]
+            ],
           }
         ]
       },
@@ -36,8 +36,8 @@
         "srcEntry": "./ets/controller/SecondaryAbility.ts",
         "description": "Secondary Ability",
         "icon": "$media:layered_image",
-        "label": "$string:ability_label",
-        "startWindowIcon": "$media:startIcon",
+        "label": "$string:secondary_ability_label",
+        "startWindowIcon": "$media:foreground",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
         "skills": []
@@ -45,10 +45,10 @@
       {
         "name": "LastAbility",
         "srcEntry": "./ets/controller/LastAbility.ts",
-        "description": "Last Ability",
+        "description": "$string:last_ability_label",
         "icon": "$media:layered_image",
         "label": "$string:ability_label",
-        "startWindowIcon": "$media:startIcon",
+        "startWindowIcon": "$media:foreground",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
         "skills": []

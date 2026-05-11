@@ -2,15 +2,31 @@
   "string": [
     {
       "name": "module_description",
-      "value": "Harmony Playground"
+      "value": "River Crab"
+    },
+    {
+      "name": "launcher_name",
+      "value": "River Crab"
     },
     {
       "name": "ability_description",
-      "value": "demonstration"
+      "value": "River Crab"
     },
     {
       "name": "ability_label",
-      "value": "Harmony Workspace"
+      "value": "River Crab"
+    },
+    {
+      "name": "default_ability_label",
+      "value": "🦀(default) "
+    },
+    {
+      "name": "secondary_ability_label",
+      "value": "🦀(secondary) "
+    },
+    {
+      "name": "last_ability_label",
+      "value": "🦀(last) "
     }
   ]
 }
