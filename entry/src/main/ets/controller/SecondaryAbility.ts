@@ -2,7 +2,6 @@ import { UIAbility } from "@kit.AbilityKit";
 import window from "@ohos.window";
 import { bark } from "../patch";
 
-
 export default class SecondaryAbility extends UIAbility {
   override onWindowStageCreate(windowStage: window.WindowStage): void {
     super.onWindowStageCreate(windowStage)

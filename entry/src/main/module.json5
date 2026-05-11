@@ -10,11 +10,16 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.PUBLISH_AGENT_REMINDER"
+      }
+    ],
     "abilities": [
       {
         "name": "DefaultAbility",
         "srcEntry": "./ets/controller/DefaultAbility.ts",
-        "description": "Default Ablility ",
+        "description": "Default Ability",
         "icon": "$media:layered_image",
         "label": "$string:ability_label",
         "startWindowIcon": "$media:startIcon",

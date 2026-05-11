@@ -4,16 +4,16 @@ export function bark(msg: string) {
   hilog.info(0, "natsuki", msg);
 }
 
-export async function defer(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+export async function defer(seconds: number) {
+  return new Promise(resolve => setTimeout(resolve, seconds * 1000))
 }
 
-export async function defers(ms: number) {
+export async function defers(seconds: number) {
   let count = 0
-  while (count < ms) {
+  while (count < seconds) {
     await new Promise(_ => setTimeout(_, 1000))
     bark(`wait for ${count}`)
-    count += 1000
+    count += 1
   }
 }
 

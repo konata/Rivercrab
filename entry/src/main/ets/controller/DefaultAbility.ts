@@ -1,7 +1,7 @@
 import { UIAbility } from '@kit.AbilityKit';
 import { bark } from '../patch';
 import window from '@ohos.window';
-import { LastWant } from '../consts';
+import { LastWant } from '../platform';
 
 export default class DefaultAbility extends UIAbility {
   override onWindowStageCreate(windowStage: window.WindowStage): void {
