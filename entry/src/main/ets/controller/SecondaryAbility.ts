@@ -4,11 +4,9 @@ import { bark } from "../patch";
 
 
 export default class SecondaryAbility extends UIAbility {
-  override onWindowStageCreate(windowStage: window.WindowStage): void {
+  override async onWindowStageCreate(windowStage: window.WindowStage) {
     super.onWindowStageCreate(windowStage)
     bark("onWindowStageCreate@SecondaryAbility")
-    windowStage.loadContent("page/Secondary", err => {
-      bark(`loadContent,code:${err.code}, message:${err.message}, name:${err.name} stack:${err.stack}`)
-    })
+    windowStage.loadContent("view/Secondary")
   }
 }
