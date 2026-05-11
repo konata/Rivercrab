@@ -6,7 +6,7 @@ export class LastAbility extends UIAbility {
   override async onWindowStageCreate(windowStage: window.WindowStage) {
     super.onWindowStageCreate(windowStage);
     bark("onWindowStageCreate")
-    await windowStage.loadContent("page/Last")
+    await windowStage.loadContent("view/Last")
   }
 }
 

@@ -8,5 +8,6 @@ export class DefaultAbility extends UIAbility {
     super.onWindowStageCreate(windowStage);
     bark("onWindowStageCreate")
     await windowStage.loadContent("view/Default")
+    bark(`ability:${JSON.stringify(this.context.abilityInfo)}`)
   }
 }
