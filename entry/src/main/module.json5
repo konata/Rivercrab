@@ -4,6 +4,7 @@
     "type": "entry",
     "description": "$string:module_description",
     "mainElement": "DefaultAbility",
+    "srcEntry": "./ets/stage/AbilityStage.ts",
     "deviceTypes": [
       "phone"
     ],

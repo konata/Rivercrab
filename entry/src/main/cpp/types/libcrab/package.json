@@ -1,0 +1,4 @@
+{
+  "name": "libcrab.so",
+  "types": "./index.d.ts"
+}
