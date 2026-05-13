@@ -5,10 +5,10 @@ import { bark } from '../patch';
 
 const mode = fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC;
 
-export default class Crab extends AbilityStage {
+export default class App extends AbilityStage {
   onCreate(): void {
     const state = crab.status();
-    bark(`AbilityStage:status=${JSON.stringify(state)}`);
+    bark(`App:status=${JSON.stringify(state)}`);
     if (state.loaded) return;
 
     const home = `${this.context.filesDir}/frida`;
@@ -20,6 +20,6 @@ export default class Crab extends AbilityStage {
     fs.closeSync(file);
 
     const config = JSON.stringify({ interaction: { type: 'script', path } });
-    bark(`AbilityStage:bootstrap=${JSON.stringify(crab.bootstrap('libgadget.so', config))}`);
+    bark(`App:bootstrap=${JSON.stringify(crab.bootstrap('libgadget.so', config))}`);
   }
 }

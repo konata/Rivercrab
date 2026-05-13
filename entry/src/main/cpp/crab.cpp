@@ -29,14 +29,14 @@ std::string Text(napi_env env, napi_value value)
     return text;
 }
 
-void Put(napi_env env, napi_value object, const char *key, bool value)
+void SetBoolProperty(napi_env env, napi_value object, const char *key, bool value)
 {
     napi_value item = nullptr;
     napi_get_boolean(env, value, &item);
     napi_set_named_property(env, object, key, item);
 }
 
-void Put(napi_env env, napi_value object, const char *key, const std::string &value)
+void SetStringProperty(napi_env env, napi_value object, const char *key, const std::string &value)
 {
     napi_value item = nullptr;
     napi_create_string_utf8(env, value.c_str(), NAPI_AUTO_LENGTH, &item);
@@ -47,10 +47,10 @@ napi_value Pack(napi_env env)
 {
     napi_value object = nullptr;
     napi_create_object(env, &object);
-    Put(env, object, "attempted", crab.attempted);
-    Put(env, object, "loaded", crab.loaded);
-    Put(env, object, "gadgetName", crab.gadget);
-    Put(env, object, "lastError", crab.error);
+    SetBoolProperty(env, object, "attempted", crab.attempted);
+    SetBoolProperty(env, object, "loaded", crab.loaded);
+    SetStringProperty(env, object, "gadgetName", crab.gadget);
+    SetStringProperty(env, object, "lastError", crab.error);
     return object;
 }
 

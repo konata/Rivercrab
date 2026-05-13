@@ -7,7 +7,7 @@ const hooks = [
     symbol: 'napi_new_instance',
     enter(args) {
       this.out = args[4];
-      say(`napi_new_instance env=${args[0]} ctor=${args[1]} argc=${args[2].toUInt32()} argv=${args[3]} out=${args[4]}`);
+      say(`napi_new_instance env=${args[0]} ctor=${args[1]} name=${ctor(args[0], args[1])} argc=${args[2].toUInt32()} argv=${args[3]} out=${args[4]}`);
       if (traces-- > 0) say(`napi_new_instance pc=${this.context.pc} lr=${this.context.lr} fp=${this.context.fp || this.context.x29}`);
     },
     leave(retval) {
@@ -20,6 +20,24 @@ const seen = new Set();
 const read = pointer => pointer.isNull() ? null : pointer.readCString();
 const sym = name => Module.findGlobalExportByName(name);
 let traces = 5;
+
+const named = new NativeFunction(sym('napi_get_named_property'), 'int', ['pointer', 'pointer', 'pointer', 'pointer']);
+const size = new NativeFunction(sym('napi_get_value_string_utf8'), 'int', ['pointer', 'pointer', 'pointer', 'ulong', 'pointer']);
+
+const text = (env, value) => {
+  const length = Memory.alloc(Process.pointerSize);
+  if (size(env, value, NULL, 0, length) !== 0) return '<error>';
+  const bytes = length.readU64().toNumber() + 1;
+  const data = Memory.alloc(bytes);
+  if (size(env, value, data, bytes, length) !== 0) return '<error>';
+  return data.readUtf8String(length.readU64().toNumber());
+};
+
+const ctor = (env, value) => {
+  const out = Memory.alloc(Process.pointerSize);
+  if (named(env, value, Memory.allocUtf8String('name'), out) !== 0) return '<error>';
+  return text(env, out.readPointer());
+};
 
 const hook = (name, target, body) => {
   if (!target || seen.has(name)) return false;
