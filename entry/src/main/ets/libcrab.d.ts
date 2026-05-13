@@ -1,3 +1,16 @@
-/// <reference path="../cpp/types/libcrab/index.d.ts" />
+declare module 'libcrab.so' {
+  export interface Status {
+    attempted: boolean;
+    loaded: boolean;
+    gadgetName: string;
+    lastError: string;
+  }
 
-export {};
+  const crab: {
+    status: () => Status;
+    bootstrap: (gadgetName?: string, config?: string) => Status
+  }
+
+  export default crab;
+
+}
