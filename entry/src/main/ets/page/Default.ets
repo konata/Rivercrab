@@ -62,7 +62,7 @@ struct Default {
   build() {
     Column({ space: 12 }) {
       Text(`🦀`).fontSize(30).fontWeight(FontWeight.Bold)
-      Text('Background Ability Launch').fontSize(22).fontWeight(FontWeight.Lighter)
+      Text('Background Ability Launch').fontSize(22).fontWeight(FontWeight.Normal)
 
       Button('Assault').width(280).onClick(async () => {
         catching(async () => {
