@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/natsuki/.ohos/config/default_Rivercrab_kS0VZxOEvhqNTY5JJkuWm94Q4XFf1XOqUyZ1SEiXLwI=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B8B7B6DAC22ED85116EE66386B5E35AA58F669F3E4E504A86F8A36DEDA50F3DBBE037DEC8285068",
+          "profile": "/Users/natsuki/.ohos/config/default_Rivercrab_kS0VZxOEvhqNTY5JJkuWm94Q4XFf1XOqUyZ1SEiXLwI=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/natsuki/.ohos/config/default_Rivercrab_kS0VZxOEvhqNTY5JJkuWm94Q4XFf1XOqUyZ1SEiXLwI=.p12",
+          "storePassword": "0000001BB588DFAF5CC2A879AD8940C18BBEAE9CA20BF1DC56A87C212C22AD984064148044490FF32C8251"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",

@@ -21,7 +21,7 @@ export async function catching(fn: () => Promise<void>) {
   try {
     await fn()
   } catch (e) {
-    bark(`catching[e]: ${e}`)
+    bark(`catching[e]: ${JSON.stringify(e)}`)
   }
 }
 
@@ -33,4 +33,3 @@ export function defaults<T>(fn: () => T, defaultsTo: T) {
     return defaultsTo
   }
 }
-

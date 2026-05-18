@@ -12,7 +12,10 @@
     "pages": "$profile:main_pages",
     "requestPermissions": [
       {
-        "name": "ohos.permission.PUBLISH_AGENT_REMINDER"
+        "name": "ohos.permission.PUBLISH_AGENT_REMINDER",
+        "usedScene": {
+          "when": "always"
+        }
       }
     ],
     "abilities": [

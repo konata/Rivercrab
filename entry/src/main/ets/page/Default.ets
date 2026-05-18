@@ -1,4 +1,4 @@
-import { common, wantAgent } from '@kit.AbilityKit';
+import { common, WantAgent, wantAgent } from '@kit.AbilityKit';
 import notificationManager from '@ohos.notificationManager';
 import reminderAgentManager from '@ohos.reminderAgentManager';
 import { wantFor } from '../platform';
@@ -14,11 +14,11 @@ struct Default {
   private async requestNeededPermissions(): Promise<void> {
     await notificationManager.requestEnableNotification(this.context);
     await reminderAgentManager.addNotificationSlot({
-      notificationType: notificationManager.SlotType.SERVICE_INFORMATION,
-      notificationLevel: notificationManager.SlotLevel.LEVEL_HIGH,
-      desc: '🦀',
-      badgeFlag: true,
-      vibrationEnabled: true,
+      notificationType: notificationManager.SlotType.CONTENT_INFORMATION,
+      // notificationLevel: notificationManager.SlotLevel.LEVEL_LOW,
+      // desc: '🦀',
+      // badgeFlag: true,
+      // vibrationEnabled: false,
     });
   }
 
@@ -28,10 +28,11 @@ struct Default {
       triggerTimeInSeconds: delay,
       title: 'Rivercrab 🦀',
       content: 'Rivercrab<content>',
+      ringDuration: 0,
       expiredContent: 'Rivercrab<expired>',
       snoozeContent: 'Rivercrab<snooze>',
       notificationId: REMINDER_NOTIFICATION_ID,
-      slotType: notificationManager.SlotType.SERVICE_INFORMATION,
+      slotType: notificationManager.SlotType.OTHER_TYPES,
       tapDismissed: false,
       autoDeletedTime: new Date().getTime() + 2,
       wantAgent: wantFor("Secondary")
@@ -41,22 +42,15 @@ struct Default {
     bark(`publishReminder: reminderId=${reminderId}, notificationId=${REMINDER_NOTIFICATION_ID}`)
   }
 
-  private async trigger(): Promise<void> {
-    const notifications = await notificationManager.getActiveNotifications();
-    const agent = notifications.filter(it => it.id == REMINDER_NOTIFICATION_ID)?.[0].wantAgent
-    if (agent) {
-      const bundleName = await wantAgent.getBundleName(agent)
-      const operationType = await wantAgent.getOperationType(agent)
-      const uid = await wantAgent.getUid(agent)
-      bark(`trigger: ${[bundleName, operationType, uid]}`)
+  private async trigger(agent: WantAgent): Promise<void> {
+    const bundleName = await wantAgent.getBundleName(agent)
+    const operationType = await wantAgent.getOperationType(agent)
+    const uid = await wantAgent.getUid(agent)
+    bark(`trigger: ${[bundleName, operationType, uid]}`)
 
-
-      wantAgent.trigger(agent, { code: 100 }, (err, data) => {
-        bark(`trigger: ${JSON.stringify([err, data])}`)
-      })
-    } else {
-      bark("trigger: notification -> agent -> not found")
-    }
+    wantAgent.trigger(agent, { code: 100 }, (err, data) => {
+      bark(`trigger: ${JSON.stringify([err, data])}`)
+    })
   }
 
   build() {
@@ -68,8 +62,16 @@ struct Default {
         catching(async () => {
           await this.requestNeededPermissions()
           await this.publish(1)
-          await defers(20)
-          await this.trigger()
+          await defers(2) // now we should got the notification
+          const notifications = await notificationManager.getActiveNotifications();
+          const agent = notifications.filter(it => it.id == REMINDER_NOTIFICATION_ID)?.[0].wantAgent
+          if (!agent) {
+            bark("notification not found")
+            return
+          }
+          await notificationManager.cancel(REMINDER_NOTIFICATION_ID, "REMINDER_AGENT")
+          await defers(10)
+          await this.trigger(agent)
         })
       })
     }
